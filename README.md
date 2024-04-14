@@ -8,3 +8,4 @@ proyecto cotizador criptomonedas en vue js
 #Clase153.- Mostando las criptomonedas en el formulario
 #Clase 154.- Leyendo los valores que deseamos cotizar
 #Clase 155.- Validar el Formulario
+#Clase 156.- Construir la url para cotizar
