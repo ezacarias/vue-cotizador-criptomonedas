@@ -13,6 +13,7 @@
     moneda:'',
     criptomoneda:''
   })
+  const cotizacion = ref({})
   const cotizarCripto = ()=>{
     //validar que cotizar este lleno
     if(Object.values(cotizar).includes('')){
@@ -25,7 +26,10 @@
   const obtenerCotizacion = async()=>{
     const { moneda, criptomoneda} = cotizar
     const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`
-    console.log(url)
+    const respuesta = await fetch(url)
+    const data = await respuesta.json()
+    cotizacion.value = data.DISPLAY[criptomoneda][moneda]
+    //console.log()
   }
 
   onMounted(()=>{
