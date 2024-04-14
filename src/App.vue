@@ -26,13 +26,26 @@
         <div class="campo">
             <label for="moneda">Moneda:</label>
             <select name="moneda" id="moneda">
-                <option value="">-- selecciona --</option>
+                <option value="">-- Selecciona --</option>
                 <option 
                   v-for="moneda in monedas" 
                   :value="moneda.codigo"
                   >{{ moneda.texto }}</option>
             </select>
         </div>
+
+        <div class="campo">
+            <label for="cripto">Criptomoneda:</label>
+            <select name="cripto" id="cripto">
+                <option value="">-- Selecciona --</option>
+                <option 
+                  v-for="criptomoneda in criptomonedas" 
+                  :value="criptomoneda.CoinInfo.Name"
+                  >{{ criptomoneda.CoinInfo.FullName }}</option>
+            </select>
+        </div>
+        <input type="submit" value="Cotizar" />
+
       </form>
      </div>
    </div>
