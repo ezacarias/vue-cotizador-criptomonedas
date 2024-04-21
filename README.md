@@ -12,3 +12,4 @@ proyecto cotizador criptomonedas en vue js
 #Clase 157.- Obtener el resultado de la cotización dinamicamente.
 
 #Clase 158.- Mostrar el resultado de la cotización y RETO 06
+#Clase 159.- Solución y reto 06
