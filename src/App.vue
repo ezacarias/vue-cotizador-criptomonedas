@@ -1,23 +1,18 @@
 <script setup>
- import { ref, reactive, onMounted, computed } from 'vue'
- import Alerta from './components/Alerta.vue'
- import  Spinner from './components/Spinner.vue'
- import useCripto from './composables/useCripto'
+  import { ref, reactive, computed } from 'vue'
+  import Alerta from './components/Alerta.vue'
+  import  Spinner from './components/Spinner.vue'
+  import useCripto from './composables/useCripto'
 
- const monedas = ref([
-      { codigo: 'USD', texto: 'Dolar de Estados Unidos'},
-      { codigo: 'MXN', texto: 'Peso Mexicano'},
-      { codigo: 'EUR', texto: 'Euro'},
-      { codigo: 'GBP', texto: 'Libra Esterlina'},
-  ])
-  const criptomonedas = ref([])
+
+  const { monedas, criptomonedas, cotizacion, cargando, obtenerCotizacion, mostrarResultado } = useCripto()
+ 
   const error = ref('')
   const cotizar = reactive({
     moneda:'',
     criptomoneda:''
   })
-  const cotizacion = ref({})
-  const cargando   = ref(false);
+
   const { cotizarMoneda }  = useCripto()
   cotizarMoneda()
 
@@ -28,36 +23,13 @@
        return
     }
     error.value=''
-    obtenerCotizacion()
-  }
-  const obtenerCotizacion = async()=>{
-    cargando.value = true
-    cotizacion.value = {}
-    try{
-      const { moneda, criptomoneda} = cotizar
-      const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`
-      const respuesta = await fetch(url)
-      const data = await respuesta.json()
-      cotizacion.value = data.DISPLAY[criptomoneda][moneda]
-    }catch(error){
-      console.log(error)
-    }finally{
-      cargando.value = false
-    }
+    obtenerCotizacion(cotizar)
   }
 
-  const mostrarResultado = computed(()=>{
-     return Object.values(cotizacion.value).length > 0;
-  })
 
-  onMounted(()=>{
-    const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=3&tsym=USD';
-    fetch(url)
-    .then(resppuesta=> resppuesta.json())
-    .then(({Data})=>{
-      criptomonedas.value = Data
-    })
-  })
+
+
+
 </script>
 
 <template>
