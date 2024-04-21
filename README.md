@@ -16,3 +16,4 @@ proyecto cotizador criptomonedas en vue js
 #Clase 160.- Mostrar un spinner en lo que obtenemos una cotización
 #Clase 161.- ¿Que son los composables en Vue.js?
 #Clase 162.- Moviendo nuestro código a un composable.
+#Clase 163.- Limpiando nuestro template con componentes y composables
